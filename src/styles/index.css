@@ -1,0 +1,187 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles for the Community Fridge Finder App */
+
+/* Base styles */
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  #root {
+    height: 100%;
+  }
+}
+
+/* Component styles */
+@layer components {
+  /* Custom scrollbar for fridge list */
+  .fridge-list-container {
+    scrollbar-width: thin;
+    scrollbar-color: #d1d5db #f3f4f6;
+  }
+  
+  .fridge-list-container::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .fridge-list-container::-webkit-scrollbar-track {
+    background: #f3f4f6;
+  }
+  
+  .fridge-list-container::-webkit-scrollbar-thumb {
+    background: #d1d5db;
+    border-radius: 3px;
+  }
+  
+  .fridge-list-container::-webkit-scrollbar-thumb:hover {
+    background: #9ca3af;
+  }
+  
+  /* Line clamp utility for description text */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  /* Focus styles for accessibility */
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-oc-orange focus:ring-offset-2;
+  }
+  
+  /* Custom button styles */
+  .btn-primary {
+    @apply bg-oc-orange text-white px-4 py-2 rounded-md font-medium transition-colors duration-200 hover:bg-oc-orange-dark focus-ring;
+  }
+  
+  .btn-secondary {
+    @apply bg-white text-oc-orange border border-oc-orange px-4 py-2 rounded-md font-medium transition-colors duration-200 hover:bg-oc-orange hover:text-white focus-ring;
+  }
+}
+
+/* Utility classes */
+@layer utilities {
+  /* Custom text shadows */
+  .text-shadow-sm {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+  
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Smooth transitions */
+  .transition-all-slow {
+    transition: all 0.3s ease-in-out;
+  }
+  
+  /* Custom gradients */
+  .bg-gradient-oc {
+    background: linear-gradient(135deg, #ff9900, #ffb347);
+  }
+  
+  /* Safe area padding for mobile devices */
+  .safe-area-inset-top {
+    padding-top: env(safe-area-inset-top);
+  }
+  
+  .safe-area-inset-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  
+  /* Custom animations */
+  @keyframes pulse-orange {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+  
+  .animate-pulse-orange {
+    animation: pulse-orange 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  /* Map container styles */
+  .map-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: #f3f4f6;
+  }
+  
+  /* Info window custom styles (injected via JavaScript) */
+  .gm-style .gm-style-iw-c {
+    border-radius: 8px;
+    padding: 0;
+  }
+  
+  .gm-style .gm-style-iw-d {
+    overflow: hidden !important;
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  body {
+    background: white !important;
+    color: black !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .bg-oc-orange {
+    background-color: #cc5500 !important;
+  }
+  
+  .text-oc-orange {
+    color: #cc5500 !important;
+  }
+  
+  .border-oc-orange {
+    border-color: #cc5500 !important;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Dark mode support (future enhancement) */
+@media (prefers-color-scheme: dark) {
+  /* Dark mode styles can be added here when needed */
+}
